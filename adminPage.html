@@ -171,7 +171,7 @@
             <div class="card">
                 <div class="card-header">
                     <h2>Students</h2>
-                    <button class="create-user-btn">+ Create User</button>
+                    <button class="create-user-btn" id="openModalBtn">+ Create User</button>
                 </div>
                 <div class="table-container">
                     <table class="users-table">
@@ -185,7 +185,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr data-student-id="202012345">
                                 <td>202012345</td>
                                 <td>Juan Dela Cruz</td>
                                 <td>Computer Science</td>
@@ -198,7 +198,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr data-student-id="202000001">
                                 <td>202000001</td>
                                 <td>Maria Clara</td>
                                 <td>Nursing</td>
@@ -211,7 +211,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr data-student-id="202000002">
                                 <td>202000002</td>
                                 <td>Iron Man</td>
                                 <td>Mechanical Engineering</td>
@@ -224,7 +224,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr data-student-id="202000003">
                                 <td>202000003</td>
                                 <td>Jamir Pogi</td>
                                 <td>Film</td>
@@ -237,7 +237,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr data-student-id="202000004">
                                 <td>202000004</td>
                                 <td>Isaac Newton</td>
                                 <td>Physics</td>
@@ -250,7 +250,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr data-student-id="202000005">
                                 <td>202000005</td>
                                 <td>Justin Bieber</td>
                                 <td>Music Performance</td>
@@ -270,7 +270,7 @@
         </div>
 
         <div id="profile-page" class="page-content">
-            <div class="profile-tabs">
+             <div class="profile-tabs">
                 <button class="tab-btn active" data-tab="profile">Profile</button>
                 <button class="tab-btn" data-tab="security">Security</button>
             </div>
@@ -372,79 +372,601 @@
                             <h3>Change Password</h3>
                             <p class="last-changed">Last changed: December 1, 2025</p>
                         </div>
-
                         <div class="security-input">
                             <label>Current Password</label>
                             <input type="password" placeholder="Enter current password">
                         </div>
-
                         <div class="security-input">
                             <label>New Password</label>
                             <input type="password" placeholder="Enter new password">
                         </div>
-
                         <div class="security-input">
                             <label>Confirm New Password</label>
                             <input type="password" placeholder="Re-enter new password">
                         </div>
-
                         <button class="save-btn">Update Password</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
-</html>
 
-<script>
+    <div id="addStudentModal" class="modal-overlay">
+        <div class="modal-content">
+            <h2 class="modal-header">Add Student</h2>
+            <form id="addStudentForm" class="modal-form">
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>First Name</label>
+                        <input type="text" name="firstName" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Middle Name</label>
+                        <input type="text" name="middleName">
+                    </div>
+                    <div class="form-field">
+                        <label>Last Name</label>
+                        <input type="text" name="lastName" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>Email Address</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Birth Date</label>
+                        <input type="date" name="birthDate" required>
+                    </div>
+                </div>
+                <div class="form-row-2">
+                    <div class="form-field">
+                        <label>Student Number</label>
+                        <input type="text" name="studentNumber" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Password</label>
+                        <input type="password" name="password" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>College</label>
+                        <select name="college" required>
+                            <option value="">Select College</option>
+                            <option value="cas">College of Arts and Sciences</option>
+                            <option value="cet">College of Engineering and Technology</option>
+                            <option value="chn">College of Health and Nursing</option>
+                            <option value="cba">College of Business Administration</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label>Program</label>
+                        <select name="program" required>
+                            <option value="">Select Program</option>
+                            <option value="cs">Computer Science</option>
+                            <option value="nursing">Nursing</option>
+                            <option value="me">Mechanical Engineering</option>
+                            <option value="film">Film</option>
+                            <option value="physics">Physics</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label>School Year</label>
+                        <select name="schoolYear" required>
+                            <option value="">Select Year</option>
+                            <option value="1">1st Year</option>
+                            <option value="2">2nd Year</option>
+                            <option value="3">3rd Year</option>
+                            <option value="4">4th Year</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="modal-btn cancel-btn" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="modal-btn confirm-btn">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="editStudentModal" class="modal-overlay">
+        <div class="modal-content">
+            <h2 class="modal-header">Edit Student</h2>
+            <form id="editStudentForm" class="modal-form">
+                <input type="hidden" name="studentIdHidden">
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>First Name</label>
+                        <input type="text" name="firstName" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Middle Name</label>
+                        <input type="text" name="middleName">
+                    </div>
+                    <div class="form-field">
+                        <label>Last Name</label>
+                        <input type="text" name="lastName" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>Email Address</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Birth Date</label>
+                        <input type="date" name="birthDate" required>
+                    </div>
+                </div>
+                <div class="form-row-2">
+                    <div class="form-field">
+                        <label>Student Number (Cannot be edited)</label>
+                        <input type="text" name="studentNumber" class="input-disabled" disabled>
+                    </div>
+                    <div class="form-field">
+                        <label>Registration Status</label>
+                         <select name="regStatus" required>
+                            <option value="Regular">Regular</option>
+                            <option value="Irregular">Irregular</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>College</label>
+                        <select name="college" required>
+                            <option value="">Select College</option>
+                            <option value="College of Arts and Sciences">College of Arts and Sciences</option>
+                            <option value="College of Engineering and Technology">College of Engineering and Technology</option>
+                            <option value="College of Health and Nursing">College of Health and Nursing</option>
+                            <option value="College of Business Administration">College of Business Administration</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label>Program</label>
+                        <select name="program" required>
+                            <option value="">Select Program</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Nursing">Nursing</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                            <option value="Film">Film</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Music Performance">Music Performance</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label>School Year</label>
+                        <select name="schoolYear" required>
+                            <option value="">Select Year</option>
+                            <option value="1st Year">1st Year</option>
+                            <option value="2nd Year">2nd Year</option>
+                            <option value="3rd Year">3rd Year</option>
+                            <option value="4th Year">4th Year</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="modal-btn cancel-btn" id="cancelEditBtn">Cancel</button>
+                    <button type="submit" class="modal-btn confirm-btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="viewStudentModal" class="modal-overlay">
+        <div class="modal-content profile-modal-content">
+            <h2 class="modal-header">Student Profile</h2>
+            <div class="profile-details-grid">
+                <div class="detail-item">
+                    <label>Name</label>
+                    <span id="profile-name"></span>
+                </div>
+                <div class="detail-item">
+                    <label>Student Number</label>
+                    <span id="profile-student-number"></span>
+                </div>
+                <div class="detail-item">
+                    <label>Program</label>
+                    <span id="profile-program"></span>
+                </div>
+                <div class="detail-item">
+                    <label>College</label>
+                    <span id="profile-college"></span>
+                </div>
+                <div class="detail-item">
+                    <label>Year Level</label>
+                    <span id="profile-year-level"></span>
+                </div>
+                <div class="detail-item">
+                    <label>Section</label> <span id="profile-section"></span>
+                </div>
+                <div class="detail-item">
+                    <label>Registration Status</label>
+                    <span id="profile-status"></span>
+                </div>
+                <div class="detail-item">
+                    <label>Enrollment Type</label>
+                    <span id="profile-reg-status"></span>
+                </div>
+                <div class="detail-item full-width">
+                    <label>Address</label>
+                    <span id="profile-address"></span>
+                </div>
+            </div>
+
+            <div class="profile-schedule-section">
+                <h3>Class Schedule</h3>
+                <div class="table-container modal-table-container">
+                    <table class="users-table schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Course Code</th>
+                                <th>Description</th>
+                                <th>Section</th> <th>Schedule</th>
+                                <th>Room</th>
+                                <th>Units</th>
+                            </tr>
+                        </thead>
+                        <tbody id="profile-class-schedule">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="modal-btn cancel-btn" id="closeViewModalBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Updated Data Source with Split Names and Reg Status for Editing
+        const studentDataMap = {
+            '202012345': {
+                firstName: 'Juan', middleName: 'D.', lastName: 'Dela Cruz',
+                name: 'Juan Dela Cruz',
+                studentNumber: '202012345',
+                email: 'juandelacruz@plm.com',
+                phone: '09123456789',
+                birthDate: '2000-01-01',
+                program: 'Computer Science',
+                college: 'College of Engineering and Technology',
+                yearLevel: '4th Year',
+                section: 'Block 1',
+                status: 'Active',
+                regStatus: 'Regular',
+                address: '123 Rizal St, Sampaloc, Manila',
+                schedule: [
+                    { code: 'CS 401', desc: 'Thesis Writing', section: 'Sec 1', schedule: 'M/Th 10:00-11:30 AM', room: 'CET-405', units: 3 },
+                    { code: 'CS 402', desc: 'Advanced Database', section: 'Sec 1', schedule: 'T/F 1:00-2:30 PM', room: 'CET-406', units: 3 },
+                    { code: 'CS 403', desc: 'Software Engineering', section: 'Sec 1', schedule: 'W 9:00-12:00 PM', room: 'CET-407', units: 3 }
+                ]
+            },
+            '202000001': {
+                firstName: 'Maria', middleName: 'A.', lastName: 'Clara',
+                name: 'Maria Clara',
+                studentNumber: '202000001',
+                email: 'mariaclara@plm.com',
+                phone: '09987654321',
+                birthDate: '2001-02-14',
+                program: 'Nursing',
+                college: 'College of Health and Nursing',
+                yearLevel: '2nd Year',
+                section: 'Block A',
+                status: 'Active',
+                regStatus: 'Regular',
+                address: '456 Magnolia St, Intramuros, Manila',
+                schedule: [
+                    { code: 'NURS 201', desc: 'Anatomy and Physiology', section: 'Sec A', schedule: 'M/W/F 8:00-9:00 AM', room: 'CHN-201', units: 3 },
+                    { code: 'NURS 202', desc: 'Medical Terminology', section: 'Sec A', schedule: 'T/Th 11:30-1:00 PM', room: 'CHN-202', units: 3 }
+                ]
+            },
+            '202000002': {
+                firstName: 'Tony', middleName: 'Edward', lastName: 'Stark',
+                name: 'Iron Man',
+                studentNumber: '202000002',
+                email: 'ironman@plm.com',
+                phone: '09111111111',
+                birthDate: '1985-05-29',
+                program: 'Mechanical Engineering',
+                college: 'College of Engineering and Technology',
+                yearLevel: '3rd Year',
+                section: 'ME-31',
+                status: 'Active',
+                regStatus: 'Irregular',
+                address: 'Stark Tower, Palanca St, Malate, Manila',
+                schedule: [
+                    { code: 'MECH 301', desc: 'Thermodynamics I', section: 'Sec 1', schedule: 'M/Th 1:00-2:30 PM', room: 'CET-301', units: 3 }
+                ]
+            },
+            '202000003': {
+                firstName: 'Jamir', middleName: '', lastName: 'Pogi',
+                name: 'Jamir Pogi',
+                studentNumber: '202000003',
+                email: 'jamir@plm.com',
+                phone: '09222222222',
+                birthDate: '2002-12-25',
+                program: 'Film',
+                college: 'College of Arts and Sciences',
+                yearLevel: '1st Year',
+                section: 'FLM-11',
+                status: 'Active',
+                regStatus: 'Regular',
+                address: '789 Ligtas St, Santa Cruz, Manila',
+                schedule: [
+                    { code: 'FILM 101', desc: 'Intro to Filmmaking', section: 'Sec 2', schedule: 'T 2:30-5:30 PM', room: 'CAS-101', units: 3 }
+                ]
+            },
+            '202000004': {
+                firstName: 'Isaac', middleName: '', lastName: 'Newton',
+                name: 'Isaac Newton',
+                studentNumber: '202000004',
+                email: 'newton@plm.com',
+                phone: '09333333333',
+                birthDate: '1643-01-04',
+                program: 'Physics',
+                college: 'College of Arts and Sciences',
+                yearLevel: '4th Year',
+                section: 'PHY-41',
+                status: 'Inactive',
+                regStatus: 'Regular',
+                address: 'Unit 1, Lawton Residences, Ermita, Manila',
+                schedule: []
+            },
+            '202000005': {
+                firstName: 'Justin', middleName: '', lastName: 'Bieber',
+                name: 'Justin Bieber',
+                studentNumber: '202000005',
+                email: 'jb@plm.com',
+                phone: '09444444444',
+                birthDate: '1994-03-01',
+                program: 'Music Performance',
+                college: 'College of Arts and Sciences',
+                yearLevel: '2nd Year',
+                section: 'MUS-21',
+                status: 'Inactive',
+                regStatus: 'Irregular',
+                address: '101 Love Yourself Ave, Paco, Manila',
+                schedule: []
+            }
+        };
+
+        // Navigation Logic
         const navItems = document.querySelectorAll('.nav-item');
-        
         navItems.forEach(item => {
             item.addEventListener('click', function(e) {
                 e.preventDefault();
-                
                 const page = this.getAttribute('data-page');
-                
                 if (page === 'logout') {
                     if (confirm('Are you sure you want to logout?')) {
                         window.location.href = 'admin.html';
                     }
                     return;
                 }
-                
                 navItems.forEach(nav => nav.classList.remove('active'));
                 this.classList.add('active');
-                
-                document.querySelectorAll('.page-content').forEach(p => {
-                    p.classList.remove('active');
-                });
-                
+                document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
                 const selectedPage = document.getElementById(page + '-page');
-                if (selectedPage) {
-                    selectedPage.classList.add('active');
+                if (selectedPage) selectedPage.classList.add('active');
+            });
+        });
+
+        // Profile Tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                tabBtns.forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                this.classList.add('active');
+                const activeTab = document.getElementById(tabName + '-tab');
+                if (activeTab) activeTab.classList.add('active');
+            });
+        });
+
+        // --- ADD STUDENT MODAL LOGIC ---
+        const addModal = document.getElementById('addStudentModal');
+        const openModalBtn = document.getElementById('openModalBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const addStudentForm = document.getElementById('addStudentForm');
+
+        if(openModalBtn) {
+            openModalBtn.addEventListener('click', () => {
+                addModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+        if(cancelBtn) {
+            cancelBtn.addEventListener('click', () => {
+                addModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                addStudentForm.reset();
+            });
+        }
+        addStudentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // In a real app, you would collect data and send to server
+            alert('Student created successfully!');
+            addModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            addStudentForm.reset();
+        });
+
+        // --- EDIT STUDENT MODAL LOGIC (NEW) ---
+        const editModal = document.getElementById('editStudentModal');
+        const editStudentForm = document.getElementById('editStudentForm');
+        const cancelEditBtn = document.getElementById('cancelEditBtn');
+        const editButtons = document.querySelectorAll('.edit-btn');
+
+        // Add Event Listeners to all Edit Buttons
+        editButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const row = this.closest('tr');
+                const studentId = row.getAttribute('data-student-id');
+                openEditModal(studentId);
+            });
+        });
+
+        function openEditModal(studentId) {
+            const data = studentDataMap[studentId];
+            if (!data) return;
+
+            // Pre-fill the form
+            const form = editStudentForm;
+            form.elements['studentIdHidden'].value = studentId;
+            form.elements['firstName'].value = data.firstName;
+            form.elements['middleName'].value = data.middleName;
+            form.elements['lastName'].value = data.lastName;
+            form.elements['email'].value = data.email;
+            form.elements['phone'].value = data.phone;
+            form.elements['birthDate'].value = data.birthDate;
+            form.elements['studentNumber'].value = data.studentNumber; // This is disabled in HTML
+            form.elements['regStatus'].value = data.regStatus || 'Regular'; // Default to Regular if missing
+            form.elements['college'].value = data.college;
+            form.elements['program'].value = data.program;
+            form.elements['schoolYear'].value = data.yearLevel;
+
+            editModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Handle Edit Form Submission
+        editStudentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Here you would typically send an AJAX request to update the database
+            
+            // Show Success Alert
+            alert('Changes saved successfully!');
+            
+            editModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close Edit Modal
+        if(cancelEditBtn) {
+            cancelEditBtn.addEventListener('click', () => {
+                editModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
+
+        // --- DELETE STUDENT LOGIC (NEW) ---
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+
+        deleteButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const row = this.closest('tr');
+                const studentId = row.getAttribute('data-student-id');
+                // Get name from the second cell (index 1)
+                const studentName = row.cells[1].textContent; 
+
+                if (confirm(`Are you sure you want to deactivate student ${studentName} (ID: ${studentId})?`)) {
+                    // Simulate API call
+                    // In real app: fetch('/api/delete', { method: 'POST', body: ... })
+                    
+                    // Update UI immediately (Soft Delete)
+                    const statusBadge = row.querySelector('.status-badge');
+                    if (statusBadge) {
+                        statusBadge.textContent = 'Inactive';
+                        statusBadge.classList.remove('active');
+                        statusBadge.classList.add('inactive');
+                    }
+                    
+                    // Update Button State
+                    this.textContent = 'Deactivated';
+                    this.disabled = true;
+                    this.style.backgroundColor = '#ccc';
+                    this.style.cursor = 'not-allowed';
+
+                    // Update Data Map so View/Edit reflects the change
+                    if (studentDataMap[studentId]) {
+                        studentDataMap[studentId].status = 'Inactive';
+                    }
+
+                    alert('Student deactivated successfully.');
                 }
             });
         });
 
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        
-        tabBtns.forEach(btn => {
+        // --- VIEW PROFILE LOGIC ---
+        const viewModal = document.getElementById('viewStudentModal');
+        const closeViewModalBtn = document.getElementById('closeViewModalBtn');
+        const viewButtons = document.querySelectorAll('.view-btn');
+
+        viewButtons.forEach(btn => {
             btn.addEventListener('click', function() {
-                const tabName = this.getAttribute('data-tab');
-                
-                tabBtns.forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-                
-                this.classList.add('active');
-                const activeTab = document.getElementById(tabName + '-tab');
-                if (activeTab) {
-                    activeTab.classList.add('active');
-                }
+                const row = this.closest('tr');
+                const studentId = row.getAttribute('data-student-id');
+                showStudentProfile(studentId);
             });
         });
+
+        function showStudentProfile(studentId) {
+            const student = studentDataMap[studentId];
+            if (!student) return;
+
+            document.getElementById('profile-name').textContent = student.name;
+            document.getElementById('profile-student-number').textContent = student.studentNumber;
+            document.getElementById('profile-program').textContent = student.program;
+            document.getElementById('profile-college').textContent = student.college;
+            document.getElementById('profile-year-level').textContent = student.yearLevel;
+            document.getElementById('profile-section').textContent = student.section;
+            document.getElementById('profile-address').textContent = student.address;
+            
+            // New field for View
+            document.getElementById('profile-reg-status').textContent = student.regStatus || 'Regular';
+
+            const statusSpan = `<span class="status-badge ${student.status.toLowerCase()}">${student.status}</span>`;
+            document.getElementById('profile-status').innerHTML = statusSpan;
+
+            const scheduleBody = document.getElementById('profile-class-schedule');
+            scheduleBody.innerHTML = ''; 
+
+            if (student.schedule && student.schedule.length > 0) {
+                student.schedule.forEach(item => {
+                    const row = scheduleBody.insertRow();
+                    row.innerHTML = `
+                        <td>${item.code}</td>
+                        <td>${item.desc}</td>
+                        <td>${item.section}</td> <td>${item.schedule}</td>
+                        <td>${item.room}</td>
+                        <td>${item.units}</td>
+                    `;
+                });
+            } else {
+                const row = scheduleBody.insertRow();
+                row.innerHTML = `<td colspan="6" style="text-align: center; color: #999;">No classes scheduled.</td>`;
+            }
+
+            viewModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        if (closeViewModalBtn) {
+            closeViewModalBtn.addEventListener('click', () => {
+                viewModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
+
+        // Universal Close for clicking outside any modal
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay')) {
+                e.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
     </script>
 </body>
 </html>
