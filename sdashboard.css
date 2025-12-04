@@ -1128,3 +1128,120 @@ tbody tr:hover {
     body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Chrome */
     /* end hide page scrollbar */
 }
+
+/* Grades Table Styles */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.grades-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.grades-table thead {
+    background-color: #f8f9fa;
+}
+
+.grades-table th {
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    color: #495057;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.grades-table th:first-child {
+    padding-left: 24px;
+}
+
+.grades-table th:nth-child(3),
+.grades-table th:nth-child(4),
+.grades-table th:nth-child(5) {
+    text-align: center;
+}
+
+.grades-table td {
+    padding: 20px;
+    font-size: 14px;
+    color: #495057;
+    border-bottom: 1px solid #e9ecef;
+    text-align: left;
+}
+
+.grades-table td:first-child {
+    padding-left: 24px;
+    font-weight: 400;
+    color: #212529;
+    text-align: left;
+}
+
+.grades-table td:nth-child(2) {
+    color: #6c757d;
+    text-align: left;
+}
+
+.grades-table td:nth-child(3),
+.grades-table td:nth-child(4) {
+    text-align: center;
+    font-weight: 500;
+}
+
+.grades-table td:nth-child(5) {
+    text-align: center;
+}
+
+.grades-table tbody tr {
+    transition: background-color 0.2s;
+}
+
+.grades-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Remark Badge Styles */
+.remark-badge {
+    display: inline-block;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.remark-badge.passed {
+    background-color: #d4f4dd;
+    color: #0d6832;
+}
+
+.remark-badge.failed {
+    background-color: #ffd4d4;
+    color: #d32f2f;
+}
+
+.remark-badge.incomplete {
+    background-color: #fff4cc;
+    color: #856404;
+}
+
+/* Semester GWA Display */
+.semester-gwa {
+    padding: 20px 24px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    color: #212529;
+    border-top: 1px solid #e9ecef;
+    background-color: #ffffff;
+}
+/* Override the global center alignment for the schedule table */
+.schedule-table th:first-child,
+.schedule-table td:first-child {
+    text-align: left;
+}
+
+/* Ensure the second column (Description) is also left aligned */
+.schedule-table th:nth-child(2),
+.schedule-table td:nth-child(2) {
+    text-align: left;
+}
